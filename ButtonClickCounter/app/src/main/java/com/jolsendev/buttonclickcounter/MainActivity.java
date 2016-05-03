@@ -16,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
 
     private Button ourButton;
     private TextView ourMessage;
+    private int numTimeClicked = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +28,13 @@ public class MainActivity extends AppCompatActivity {
         View.OnClickListener ourOnClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ourMessage.setText("Hello, Android!! the button got tapped");
+                numTimeClicked = numTimeClicked + 1;
+                String message = "Hello, Android!! the button got tapped "+ numTimeClicked +" time";
+
+                if(numTimeClicked !=1){
+                    message += "s";
+                }
+                ourMessage.setText(message);
             }
         };
         ourButton.setOnClickListener(ourOnClickListener);
