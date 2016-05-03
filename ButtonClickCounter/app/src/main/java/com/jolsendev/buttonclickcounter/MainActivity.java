@@ -67,7 +67,8 @@ public class MainActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            Toast toastMessage = Toast.makeText(this, "Setting menu go tapped", Toast.LENGTH_LONG);
+            Toast toastMessage = Toast.makeText(this, "Set text is: "+ ourMessage.getText(), Toast.LENGTH_LONG);
+            numTimeClicked = 0;
             toastMessage.show();
             return true;
         }
