@@ -27,7 +27,7 @@
         android:layout_height="wrap_content"
         android:inputType="numberDecimal"
         android:ems="10"
-        android:id="@+id/editText"
+        android:id="@+id/editOperand1"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="25dp" />
 
@@ -36,7 +36,7 @@
         android:layout_height="wrap_content"
         android:inputType="numberDecimal"
         android:ems="10"
-        android:id="@+id/editText2"
+        android:id="@+id/editOperand2"
         android:layout_gravity="center_horizontal" />
 
     <LinearLayout
@@ -51,7 +51,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="+"
-            android:id="@+id/button"
+            android:id="@+id/btnAddition"
             tools:ignore="HardcodedText"
             style="?android:buttonStyleSmall"
             />
@@ -60,7 +60,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="-"
-            android:id="@+id/button2"
+            android:id="@+id/btnSubtraction"
             tools:ignore="HardcodedText"
             style="?android:buttonStyleSmall"
             />
@@ -69,7 +69,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="/"
-            android:id="@+id/button3"
+            android:id="@+id/btnDivision"
             tools:ignore="HardcodedText"
             style="?android:buttonStyleSmall"
             />
@@ -78,21 +78,28 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="*"
-            android:id="@+id/button4"
+            android:id="@+id/btnMultiplication"
             tools:ignore="HardcodedText"
             style="?android:buttonStyleSmall"
             />
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Clr"
+            android:id="@+id/btnClear" />
     </LinearLayout>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Result"
-        android:id="@+id/textView2"
+        android:text="@string/result_description"
+        android:id="@+id/textTheResult"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="25dp"
-        style="?android:buttonStyleSmall"
+
         />
 
     <TextView
@@ -100,7 +107,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="0.0"
-        android:id="@+id/textView3"
+        android:id="@+id/textResult"
         android:layout_gravity="center_horizontal"
         android:gravity="center" />
 </LinearLayout>
