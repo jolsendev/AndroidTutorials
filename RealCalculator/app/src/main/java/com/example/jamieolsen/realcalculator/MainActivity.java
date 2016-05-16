@@ -1,6 +1,7 @@
 package com.example.jamieolsen.realcalculator;
 
 import android.os.Bundle;
+import android.renderscript.Double2;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -36,6 +38,8 @@ public class MainActivity extends AppCompatActivity {
     private TextView textEquation;
     private StringBuilder sb;
     private StringBuilder sbEquation;
+    private String subString;
+    private boolean decimalNotSet = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +66,8 @@ public class MainActivity extends AppCompatActivity {
                 clearStringBuilder();
                 textEquation.setText("");
                 textResult.setText("0.0");
+                decimalNotSet = true;
+
             }
         });
         clear.setOnClickListener(new View.OnClickListener() {
@@ -69,6 +75,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 textResult.setText("0.0");
                 clearStringBuilder();
+                decimalNotSet = true;
             }
         });
         back.setOnClickListener(new View.OnClickListener() {
@@ -77,6 +84,8 @@ public class MainActivity extends AppCompatActivity {
                 String text = sb.toString();
                 if(text.length()>0){
                     String sub = text.substring(0,text.length()-1);
+                    String checkDec = text.substring(text.length()-1,text.length());
+                    if(checkDec.equals(".")){decimalNotSet = true;}
                     if(sub.length()>0){
                         textResult.setText(sub);
                         sb.replace(0, sb.length(), sub);
@@ -85,12 +94,6 @@ public class MainActivity extends AppCompatActivity {
                         textResult.setText("0.0");
                     }
                 }
-            }
-        });
-        divide.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
             }
         });
         nine.setOnClickListener(new View.OnClickListener() {
@@ -166,47 +169,79 @@ public class MainActivity extends AppCompatActivity {
         neg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                //if neg switch to pos
+                //Toast.makeText(MainActivity.this,neg.getText().toString(),
+                //      Toast.LENGTH_SHORT).show();
+                if(!textResult.getText().equals("0.0")){
+                    if(neg.getText().toString().equals("neg")){
+                        sb.insert(0,"-");
+                        textResult.setText(sb.toString());
+                        neg.setText("pos");
+                    }else if (neg.getText() == "pos"){
+                        sb.replace(0,1,"");
+                        textResult.setText(sb.toString());
+                        neg.setText("neg");
+                    }
+                    //add a '-' to beginning of string builder
+                    //if pos switch to neg
+                    //remove '-' from beginning of string builder
+                    //setText on textResult
+                }
             }
         });
         decimal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sb.append(".");
-                textResult.setText(sb.toString());
+                if(!textResult.getText().equals("0.0")){
+                    subString = sb.substring(sb.length()-1,sb.length());
+                    //Toast.makeText(MainActivity.this, subString, Toast.LENGTH_LONG).show();
+                    if(!subString.equals(".") && decimalNotSet){
+                        decimalNotSet = false;
+                        sb.append(".");
+                        textResult.setText(sb.toString());
+                    }
+                }
             }
         });
         addition.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 setEquationText(" + ");
+                decimalNotSet = true;
             }
         });
         subtraction.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 setEquationText(" - ");
+                decimalNotSet = true;
             }
         });
         multiplication.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 setEquationText(" * ");
+                decimalNotSet = true;
+
             }
         });
         division.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setEquationText(" \\ ");
+                setEquationText(" / ");
+                decimalNotSet = true;
             }
         });
         equals.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                decimalNotSet = true;
                 sbEquation.append(sb.toString());
                 double e = eval(sbEquation.toString());
-                textResult.setText(Double.toString(e));
                 clearStringBuilder();
+                sb.append(Double.toString(e));
+                textResult.setText(Double.toString(e));
+
                 clearEquationStringBuilder();
                 clearEquation();
             }
@@ -225,7 +260,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setEquationText(String operator) {
-        sbEquation.append(sb.toString());
+        if(textResult.getText().equals("0.0")){
+            sbEquation.append("0.0");
+        }else{
+            sbEquation.append(sb.toString());
+        }
+
         sbEquation.append(operator);
         textEquation.setText(sbEquation.toString());
         textResult.setText("0.0");
@@ -236,7 +276,6 @@ public class MainActivity extends AppCompatActivity {
     private void initElements() {        ce = (Button) findViewById(R.id.btnCE);
         clear = (Button) findViewById(R.id.btnC);
         back = (Button) findViewById(R.id.btnBack);
-        divide = (Button) findViewById(R.id.btnDivision);
         nine = (Button) findViewById(R.id.btn9);
         eight = (Button) findViewById(R.id.btn8);
         seven = (Button) findViewById(R.id.btn7);
@@ -288,7 +327,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //Taken from google: http://stackoverflow.com/questions/3422673/evaluating-a-math-expression-given-in-string-form
-    public static double eval(final String str) {
+    public double eval(final String str) {
         return new Object() {
             int pos = -1, ch;
 
