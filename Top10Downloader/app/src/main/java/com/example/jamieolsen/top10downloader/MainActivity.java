@@ -1,13 +1,21 @@
 package com.example.jamieolsen.top10downloader;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -48,5 +56,45 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+    private class DownLoadData extends AsyncTask<String, Void, String>{
+
+        private String mFileContent;
+        @Override
+        protected String doInBackground(String... params)
+        {
+            mFileContent = downloadXMLFile(params[0]);
+            if(mFileContent == null){
+                Log.d("DownLoadData","ERROR: downloading");
+            }
+            return mFileContent;
+        }
+
+        private String downloadXMLFile(String urlPath) {
+
+            StringBuilder tempBuffer = new StringBuilder();
+            try{
+                URL url = new URL(urlPath);
+                HttpURLConnection connection = (HttpURLConnection ) url.openConnection();
+                int response = connection.getResponseCode();
+                Log.d("DownLoadData", "The response code was "+response);
+                InputStream is = connection.getInputStream();
+                InputStreamReader reader = new InputStreamReader(is);
+
+                int charRead;
+                char[] inputBufer = new char[500];
+                while(true){
+                    charRead = reader.read();
+                    if(charRead <= 0 ){
+                        break;
+                    }
+                    tempBuffer.append(String.copyValueOf(inputBufer, 0, charRead));
+                }
+                return tempBuffer.toString();
+            }catch(IOException e){
+                Log.d("DownLoadData", "Message "+e.getMessage());
+            }
+            return null;
+        }
     }
 }
