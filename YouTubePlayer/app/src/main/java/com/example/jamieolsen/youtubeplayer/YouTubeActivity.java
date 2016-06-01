@@ -37,13 +37,13 @@ public class YouTubeActivity extends YouTubeBaseActivity implements YouTubePlaye
     }
 
     @Override
-    public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
+    public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean wasRestored) {
         Toast.makeText(this,"Initialized youtube player successfully", Toast.LENGTH_LONG);
         youTubePlayer.setPlayerStateChangeListener(playerStateChangeListener);
         youTubePlayer.setPlaybackEventListener(playbackEventListener);
-//        if(!wasRestored){
-//            youTubePlayer.cueVideo(YOUTUBE_VIDEO_ID);
-//        }
+        if(!wasRestored){
+            youTubePlayer.cueVideo(YOUTUBE_VIDEO_ID);
+        }
     }
 
     public void onInitializationFailure(YouTubePlayer.Provider provider, YouTubeInitializationResult youTubeInitializationResult) {
