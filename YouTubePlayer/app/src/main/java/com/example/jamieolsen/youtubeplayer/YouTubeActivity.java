@@ -15,8 +15,8 @@ import com.google.android.youtube.player.YouTubePlayerView;
 
 public class YouTubeActivity extends YouTubeBaseActivity implements YouTubePlayer.OnInitializedListener{
 
-    private String GOOGLE_API_KEY = "TBA";
-    private String YOUTUBE_VIDEO_ID = "TBA";
+    private String GOOGLE_API_KEY = "AIzaSyD9o3UnBfzorYsBE2AeBURlSmqK7Wk8nV4";
+    private String YOUTUBE_VIDEO_ID = "AeQCAWAhZ3o";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,9 +46,15 @@ public class YouTubeActivity extends YouTubeBaseActivity implements YouTubePlaye
 //        }
     }
 
+    public void onInitializationFailure(YouTubePlayer.Provider provider, YouTubeInitializationResult youTubeInitializationResult) {
+        Toast.makeText(this,"Initialized youtube player failed!", Toast.LENGTH_LONG);
+
+    }
+
     private YouTubePlayer.PlayerStateChangeListener playerStateChangeListener = new YouTubePlayer.PlayerStateChangeListener() {
         @Override
         public void onLoading() {
+            Toast.makeText(YouTubeActivity.this, "Good, video is loading ok", Toast.LENGTH_LONG).show();
         }
 
         @Override
@@ -58,6 +64,7 @@ public class YouTubeActivity extends YouTubeBaseActivity implements YouTubePlaye
 
         @Override
         public void onAdStarted() {
+            Toast.makeText(YouTubeActivity.this, "Click ad now and make me rich", Toast.LENGTH_LONG).show();
 
         }
 
@@ -80,11 +87,13 @@ public class YouTubeActivity extends YouTubeBaseActivity implements YouTubePlaye
 
         @Override
         public void onPlaying() {
+            Toast.makeText(YouTubeActivity.this, "Good, video is playing ok", Toast.LENGTH_LONG).show();
 
         }
 
         @Override
         public void onPaused() {
+            Toast.makeText(YouTubeActivity.this, "Good, video is pausing ok", Toast.LENGTH_LONG).show();
 
         }
 
@@ -105,8 +114,5 @@ public class YouTubeActivity extends YouTubeBaseActivity implements YouTubePlaye
     };
 
 
-    public void onInitializationFailure(YouTubePlayer.Provider provider, YouTubeInitializationResult youTubeInitializationResult) {
-        Toast.makeText(this,"Initialized youtube player failed!", Toast.LENGTH_LONG);
 
-    }
 }
