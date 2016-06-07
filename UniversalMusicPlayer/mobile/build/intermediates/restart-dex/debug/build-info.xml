@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<instant-run
+    abi="armeabi-v7a,armeabi"
+    api-level="22"
+    density="xxhdpi"
+    format="7"
+    timestamp="10330825800598" >
+
+    <task
+        name="javac"
+        duration="0" />
+    <task
+        name="instant-run-dex"
+        duration="0" />
+    <task
+        name="instant-run-transform"
+        duration="0" />
+    <task
+        name="verifier"
+        duration="0" />
+
+    <build timestamp="10022841768400" >
+        <artifact
+            location="C:\Users\a5w5nzz\AndroidStudioProjects\UniversalMusicPlayer\mobile\build\outputs\apk\mobile-debug.apk"
+            type="MAIN" />
+    </build>
+    <build timestamp="10330825800598" />
+
+</instant-run>

@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "C:\\Users\\a5w5nzz\\AndroidStudioProjects\\UniversalMusicPlayer\\mobile\\build\\intermediates\\res\\merged\\debug\\transition-v19\\lb_browse_headers_out.xml",
+        "source": "C:\\Users\\a5w5nzz\\AndroidStudioProjects\\UniversalMusicPlayer\\mobile\\build\\intermediates\\exploded-aar\\com.android.support\\leanback-v17\\23.2.0\\res\\transition-v19\\lb_browse_headers_out.xml"
+    },
+    {
+        "merged": "C:\\Users\\a5w5nzz\\AndroidStudioProjects\\UniversalMusicPlayer\\mobile\\build\\intermediates\\res\\merged\\debug\\transition-v19\\lb_browse_headers_in.xml",
+        "source": "C:\\Users\\a5w5nzz\\AndroidStudioProjects\\UniversalMusicPlayer\\mobile\\build\\intermediates\\exploded-aar\\com.android.support\\leanback-v17\\23.2.0\\res\\transition-v19\\lb_browse_headers_in.xml"
+    }
+]

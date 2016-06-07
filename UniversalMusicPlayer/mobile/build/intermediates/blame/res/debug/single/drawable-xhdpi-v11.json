@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "C:\\Users\\a5w5nzz\\AndroidStudioProjects\\UniversalMusicPlayer\\mobile\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v11\\ic_stat_action_notification.png",
+        "source": "C:\\Users\\a5w5nzz\\AndroidStudioProjects\\UniversalMusicPlayer\\mobile\\build\\intermediates\\exploded-aar\\com.google.android.libraries.cast.companionlibrary\\ccl\\2.8.1\\res\\drawable-xhdpi-v11\\ic_stat_action_notification.png"
+    },
+    {
+        "merged": "C:\\Users\\a5w5nzz\\AndroidStudioProjects\\UniversalMusicPlayer\\mobile\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v11\\ic_stat_action_democast.png",
+        "source": "C:\\Users\\a5w5nzz\\AndroidStudioProjects\\UniversalMusicPlayer\\mobile\\build\\intermediates\\exploded-aar\\com.google.android.libraries.cast.companionlibrary\\ccl\\2.8.1\\res\\drawable-xhdpi-v11\\ic_stat_action_democast.png"
+    },
+    {
+        "merged": "C:\\Users\\a5w5nzz\\AndroidStudioProjects\\UniversalMusicPlayer\\mobile\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v11\\ic_stat_content_remove.png",
+        "source": "C:\\Users\\a5w5nzz\\AndroidStudioProjects\\UniversalMusicPlayer\\mobile\\build\\intermediates\\exploded-aar\\com.google.android.libraries.cast.companionlibrary\\ccl\\2.8.1\\res\\drawable-xhdpi-v11\\ic_stat_content_remove.png"
+    }
+]

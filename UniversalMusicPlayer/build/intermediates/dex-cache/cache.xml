@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="C:\Users\a5w5nzz\AndroidStudioProjects\UniversalMusicPlayer\mobile\build\intermediates\exploded-aar\com.android.support\mediarouter-v7\23.2.0\jars\libs\internal_impl-23.2.0.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="472ae7d3bc8c2a4fcbbc79067a9b17b28edbf3d4">
+        <dex dex="C:\Users\a5w5nzz\AndroidStudioProjects\UniversalMusicPlayer\mobile\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-23.2.0_d9640eea46f7edbd6d9ec26e5d063b1522fbbe6c\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\a5w5nzz\AndroidStudioProjects\UniversalMusicPlayer\mobile\build\intermediates\exploded-aar\com.android.support\design\23.2.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="1aa5b025efe97f5006f5be16d6ca67c6c3c0c0d8">
+        <dex dex="C:\Users\a5w5nzz\AndroidStudioProjects\UniversalMusicPlayer\mobile\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-design-23.2.0_8d1c5564da8de76b237304f7739f60d411674df1\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\a5w5nzz\AndroidStudioProjects\UniversalMusicPlayer\mobile\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\23.2.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="d4c936aa8c7d2522c82e3f1829c791d9e367f009">
+        <dex dex="C:\Users\a5w5nzz\AndroidStudioProjects\UniversalMusicPlayer\mobile\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-recyclerview-v7-23.2.0_568e80ed1a68eebefeb02b80caf00c247e40253e\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\a5w5nzz\AndroidStudioProjects\UniversalMusicPlayer\mobile\build\intermediates\exploded-aar\com.android.support\leanback-v17\23.2.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="674478fe92c8940c8ab2afab6b97cb26dd25cd0d">
+        <dex dex="C:\Users\a5w5nzz\AndroidStudioProjects\UniversalMusicPlayer\mobile\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-leanback-v17-23.2.0_9cc87f035d75cc52b83b35bec5ca05aa8d3c05c6\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\a5w5nzz\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\23.2.0\support-annotations-23.2.0.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="c5bf571bb10462bd90e5419ade67793f71acbc87">
+        <dex dex="C:\Users\a5w5nzz\AndroidStudioProjects\UniversalMusicPlayer\mobile\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-23.2.0_6768e543154b575e1ef82608cdefc7426a6e3ccb\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\a5w5nzz\AndroidStudioProjects\UniversalMusicPlayer\mobile\build\intermediates\exploded-aar\com.google.android.gms\play-services-basement\8.4.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="8e673cdfadd8f2d98fdb2fda2285c30f6e449782">
+        <dex dex="C:\Users\a5w5nzz\AndroidStudioProjects\UniversalMusicPlayer\mobile\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-basement-8.4.0_2a5693672174a90b8c2e25c32f74ef8abda6c9e0\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\a5w5nzz\AndroidStudioProjects\UniversalMusicPlayer\mobile\build\intermediates\exploded-aar\com.google.android.gms\play-services-cast\8.4.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="551e78f21acf69ebfb489c0e79647824c838013e">
+        <dex dex="C:\Users\a5w5nzz\AndroidStudioProjects\UniversalMusicPlayer\mobile\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-cast-8.4.0_78b20f2fbbeff1705e0a32417640091fcb3519f4\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\a5w5nzz\AndroidStudioProjects\UniversalMusicPlayer\mobile\build\intermediates\exploded-aar\com.android.support\cardview-v7\23.2.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="bc599eb9531da9d18bc58ec4eb0b1a1d895f6839">
+        <dex dex="C:\Users\a5w5nzz\AndroidStudioProjects\UniversalMusicPlayer\mobile\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-cardview-v7-23.2.0_14fc5fe8d7ef3d1cb086ba8162529d79119b8d4a\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\a5w5nzz\AndroidStudioProjects\UniversalMusicPlayer\mobile\build\intermediates\exploded-aar\com.google.android.gms\play-services-base\8.4.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="fef2b3e4b6b1b0e5fe7b69fa137a5fa55a3182ab">
+        <dex dex="C:\Users\a5w5nzz\AndroidStudioProjects\UniversalMusicPlayer\mobile\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-base-8.4.0_8145a2601d762d6bbb703ca5d55d27a9bfeaa0de\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\a5w5nzz\AndroidStudioProjects\UniversalMusicPlayer\mobile\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="74c38ab6eaa2a1bb38aa6ebc8817576e7ed9a21f">
+        <dex dex="C:\Users\a5w5nzz\AndroidStudioProjects\UniversalMusicPlayer\mobile\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_d79b1c4eefe5e88749a4962c1d72062e42cac43b\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\a5w5nzz\AndroidStudioProjects\UniversalMusicPlayer\mobile\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\23.2.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="8c108c22c99e794eff255bb34d2a461200c4cbb0">
+        <dex dex="C:\Users\a5w5nzz\AndroidStudioProjects\UniversalMusicPlayer\mobile\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-animated-vector-drawable-23.2.0_5dd4427543b05de045efa0bf98e9ad1e35a18ba4\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\a5w5nzz\AndroidStudioProjects\UniversalMusicPlayer\mobile\build\intermediates\exploded-aar\com.android.support\support-v4\23.2.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="e5f32fa48a3eb2de0c987025c11b6e3864b634d9">
+        <dex dex="C:\Users\a5w5nzz\AndroidStudioProjects\UniversalMusicPlayer\mobile\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-v4-23.2.0_088b7879b2c61cd682cb76d28034e3ea000c9e26\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\a5w5nzz\AndroidStudioProjects\UniversalMusicPlayer\mobile\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="e3e3d351bf766f9d50e4f9116552cb7a2b12fae3">
+        <dex dex="C:\Users\a5w5nzz\AndroidStudioProjects\UniversalMusicPlayer\mobile\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_e1503d8fed876f8f7fe435d3f22fbdbfef12f5dd\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\a5w5nzz\AndroidStudioProjects\UniversalMusicPlayer\mobile\build\intermediates\exploded-aar\com.android.support\support-v4\23.2.0\jars\libs\internal_impl-23.2.0.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="6e239441500605809818997dd63b62a947195f8c">
+        <dex dex="C:\Users\a5w5nzz\AndroidStudioProjects\UniversalMusicPlayer\mobile\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-23.2.0_4d89be1359a854dff89b7768c6d2de47999cd2cf\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\a5w5nzz\AndroidStudioProjects\UniversalMusicPlayer\mobile\build\intermediates\exploded-aar\com.google.android.support\wearable\1.3.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="58b928ccbaf9090c632f278d6bd31e1ae42f2457">
+        <dex dex="C:\Users\a5w5nzz\AndroidStudioProjects\UniversalMusicPlayer\mobile\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.support-wearable-1.3.0_69144048c7f9d71695f7dc297362903aea51b4e4\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\a5w5nzz\AndroidStudioProjects\UniversalMusicPlayer\mobile\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.2.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="6e3578f92f7462d1a935a1d36173e3bdd1234976">
+        <dex dex="C:\Users\a5w5nzz\AndroidStudioProjects\UniversalMusicPlayer\mobile\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-appcompat-v7-23.2.0_c554e1df61a33207f4323f5276b37674dd63bf84\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\a5w5nzz\AndroidStudioProjects\UniversalMusicPlayer\mobile\build\intermediates\exploded-aar\com.google.android.libraries.cast.companionlibrary\ccl\2.8.1\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="6d476e025e0234d24eb5cacff803aa20a6d323ad">
+        <dex dex="C:\Users\a5w5nzz\AndroidStudioProjects\UniversalMusicPlayer\mobile\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.libraries.cast.companionlibrary-ccl-2.8.1_df842bebb2ca320774d7530d0e4697b86c5aba8c\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\a5w5nzz\AndroidStudioProjects\UniversalMusicPlayer\mobile\build\intermediates\exploded-aar\com.android.support\palette-v7\23.2.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="897400f08e8b3f5e290a5da388973f7cfe700965">
+        <dex dex="C:\Users\a5w5nzz\AndroidStudioProjects\UniversalMusicPlayer\mobile\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-palette-v7-23.2.0_384c04ae7989c5302f834a7d7e7f39e7046a9a22\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\a5w5nzz\AndroidStudioProjects\UniversalMusicPlayer\mobile\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.2.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="292a9fa091757208efa65e77eef63088247e51f3">
+        <dex dex="C:\Users\a5w5nzz\AndroidStudioProjects\UniversalMusicPlayer\mobile\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-vector-drawable-23.2.0_a724a7e3e6d3da9d373263899e309ba6867f15b6\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\a5w5nzz\AndroidStudioProjects\UniversalMusicPlayer\mobile\build\intermediates\exploded-aar\com.android.support\mediarouter-v7\23.2.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="fd0cd9457b7f221692594021eedf03836229a560">
+        <dex dex="C:\Users\a5w5nzz\AndroidStudioProjects\UniversalMusicPlayer\mobile\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-mediarouter-v7-23.2.0_4f582529b9e179e68b68034220b6e9cf63c8e859\classes.dex" />
+    </item>
+
+</items>

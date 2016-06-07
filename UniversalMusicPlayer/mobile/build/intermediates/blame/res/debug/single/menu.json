@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "C:\\Users\\a5w5nzz\\AndroidStudioProjects\\UniversalMusicPlayer\\mobile\\build\\intermediates\\res\\merged\\debug\\menu\\main.xml",
+        "source": "C:\\Users\\a5w5nzz\\AndroidStudioProjects\\UniversalMusicPlayer\\mobile\\src\\main\\res\\menu\\main.xml"
+    },
+    {
+        "merged": "C:\\Users\\a5w5nzz\\AndroidStudioProjects\\UniversalMusicPlayer\\mobile\\build\\intermediates\\res\\merged\\debug\\menu\\drawer.xml",
+        "source": "C:\\Users\\a5w5nzz\\AndroidStudioProjects\\UniversalMusicPlayer\\mobile\\src\\main\\res\\menu\\drawer.xml"
+    },
+    {
+        "merged": "C:\\Users\\a5w5nzz\\AndroidStudioProjects\\UniversalMusicPlayer\\mobile\\build\\intermediates\\res\\merged\\debug\\menu\\cast_player_menu.xml",
+        "source": "C:\\Users\\a5w5nzz\\AndroidStudioProjects\\UniversalMusicPlayer\\mobile\\build\\intermediates\\exploded-aar\\com.google.android.libraries.cast.companionlibrary\\ccl\\2.8.1\\res\\menu\\cast_player_menu.xml"
+    }
+]

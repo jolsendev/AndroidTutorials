@@ -1,0 +1,2 @@
+CHANGED,C:\Users\a5w5nzz\AndroidStudioProjects\ButtonClickCounter\app\build\intermediates\transforms\instantRun\debug\folders\1\5\main\com\jolsendev\buttonclickcounter\MainActivity.class
+CHANGED,C:\Users\a5w5nzz\AndroidStudioProjects\ButtonClickCounter\app\build\intermediates\transforms\instantRun\debug\folders\1\5\main\com\jolsendev\buttonclickcounter\MainActivity$1.class
