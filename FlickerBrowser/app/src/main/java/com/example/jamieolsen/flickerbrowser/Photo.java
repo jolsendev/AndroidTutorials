@@ -20,52 +20,29 @@ public class Photo {
         this.mLink = mLink;
         this.mTabs = mTabs;
     }
+
     public String getmTitle() {
         return mTitle;
-    }
-
-    public void setmTitle(String mTitle) {
-        this.mTitle = mTitle;
     }
 
     public String getmAuthor() {
         return mAuthor;
     }
 
-    public void setmAuthor(String mAuthor) {
-        this.mAuthor = mAuthor;
-    }
-
     public String getmAuthorId() {
         return mAuthorId;
-    }
-
-    public void setmAuthorId(String mAuthorId) {
-        this.mAuthorId = mAuthorId;
     }
 
     public String getmLink() {
         return mLink;
     }
 
-    public void setmLink(String mLink) {
-        this.mLink = mLink;
-    }
-
     public String getmTabs() {
         return mTabs;
     }
 
-    public void setmTabs(String mTabs) {
-        this.mTabs = mTabs;
-    }
-
     public String getmImage() {
         return mImage;
-    }
-
-    public void setmImage(String mImage) {
-        this.mImage = mImage;
     }
 
     @Override
