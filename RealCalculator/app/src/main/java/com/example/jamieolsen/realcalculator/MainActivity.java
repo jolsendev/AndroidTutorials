@@ -1,7 +1,6 @@
 package com.example.jamieolsen.realcalculator;
 
 import android.os.Bundle;
-import android.renderscript.Double2;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -9,9 +8,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
     private Button ce;
     private Button clear;
@@ -40,15 +38,16 @@ public class MainActivity extends AppCompatActivity {
     private StringBuilder sbEquation;
     private String subString;
     private boolean decimalNotSet = true;
+    private boolean pressedEqual = false;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState){
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         initElements();
-        initListeners();
+        initButtonListeners();
         initStringBuilder();        
     }
 
@@ -57,30 +56,22 @@ public class MainActivity extends AppCompatActivity {
         sbEquation= new StringBuilder();
     }
 
-    private void initListeners() {
 
-        ce.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+    @Override
+    public void onClick(View v) {
+
+        switch(v.getId()){
+            case R.id.btnCE:
                 clearEquationStringBuilder();
                 clearStringBuilder();
                 textEquation.setText("");
                 textResult.setText("0.0");
-                decimalNotSet = true;
-
-            }
-        });
-        clear.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+                break;
+            case R.id.btnC:
                 textResult.setText("0.0");
                 clearStringBuilder();
-                decimalNotSet = true;
-            }
-        });
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+                break;
+            case R.id.btnBack:
                 String text = sb.toString();
                 if(text.length()>0){
                     String sub = text.substring(0,text.length()-1);
@@ -94,84 +85,88 @@ public class MainActivity extends AppCompatActivity {
                         textResult.setText("0.0");
                     }
                 }
-            }
-        });
-        nine.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                    sb.append(9);
-                    textResult.setText(sb.toString());
-            }
-        });
-        eight.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+                break;
+            case R.id.btn9:
+                if(pressedEqual){
+                    clearResult();
+                    pressedEqual = false;
+                }
+                sb.append(9);
+                textResult.setText(sb.toString());
+                break;
+            case R.id.btn8:
+                if(pressedEqual){
+                    clearResult();
+                    pressedEqual = false;
+                }
                 sb.append(8);
                 textResult.setText(sb.toString());
-            }
-        });
-        seven.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+                break;
+            case R.id.btn7:
+                if(pressedEqual){
+                    clearResult();
+                    pressedEqual = false;
+                }
                 sb.append(7);
                 textResult.setText(sb.toString());
-            }
-        });
-        six.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+                break;
+            case R.id.btn6:
+                if(pressedEqual){
+                    clearResult();
+                    pressedEqual = false;
+                }
                 sb.append(6);
                 textResult.setText(sb.toString());
-            }
-        });
-        five.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+                break;
+            case R.id.btn5:
+                if(pressedEqual){
+                    clearResult();
+                    pressedEqual = false;
+                }
                 sb.append(5);
                 textResult.setText(sb.toString());
-            }
-        });
-        four.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+                break;
+            case R.id.btn4:
+                if(pressedEqual){
+                    clearResult();
+                    pressedEqual = false;
+                }
                 sb.append(4);
                 textResult.setText(sb.toString());
-            }
-        });
-        three.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+                break;
+            case R.id.btn3:
+                if(pressedEqual){
+                    clearResult();
+                    pressedEqual = false;
+                }
                 sb.append(3);
                 textResult.setText(sb.toString());
-            }
-        });
-        two.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+                break;
+            case R.id.btn2:
+                if(pressedEqual){
+                    clearResult();
+                    pressedEqual = false;
+                }
                 sb.append(2);
                 textResult.setText(sb.toString());
-            }
-        });
-        one.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+                break;
+            case R.id.btn1:
+                if(pressedEqual){
+                    clearResult();
+                    pressedEqual = false;
+                }
                 sb.append(1);
                 textResult.setText(sb.toString());
-            }
-        });
-        zero.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+                break;
+            case R.id.btn0:
+                if(pressedEqual){
+                    clearResult();
+                    pressedEqual = false;
+                }
                 sb.append(0);
                 textResult.setText(sb.toString());
-            }
-        });
-        neg.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //if neg switch to pos
-                //Toast.makeText(MainActivity.this,neg.getText().toString(),
-                //      Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.btnNeg:
                 if(!textResult.getText().equals("0.0")){
                     if(neg.getText().toString().equals("neg")){
                         sb.insert(0,"-");
@@ -182,70 +177,65 @@ public class MainActivity extends AppCompatActivity {
                         textResult.setText(sb.toString());
                         neg.setText("neg");
                     }
-                    //add a '-' to beginning of string builder
-                    //if pos switch to neg
-                    //remove '-' from beginning of string builder
-                    //setText on textResult
                 }
-            }
-        });
-        decimal.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(!textResult.getText().equals("0.0")){
-                    subString = sb.substring(sb.length()-1,sb.length());
-                    //Toast.makeText(MainActivity.this, subString, Toast.LENGTH_LONG).show();
-                    if(!subString.equals(".") && decimalNotSet){
-                        decimalNotSet = false;
-                        sb.append(".");
-                        textResult.setText(sb.toString());
-                    }
+                break;
+            case R.id.btnDecimalPoint:
+                if(!(sb.toString().indexOf(".")>-1)){
+                    sb.append(".");
+                    textResult.setText(sb.toString());
                 }
-            }
-        });
-        addition.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+                break;
+            case R.id.btnAddition:
                 setEquationText(" + ");
-                decimalNotSet = true;
-            }
-        });
-        subtraction.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+                break;
+            case R.id.btnSubtract:
                 setEquationText(" - ");
-                decimalNotSet = true;
-            }
-        });
-        multiplication.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+                break;
+            case R.id.btnMultiplication:
                 setEquationText(" * ");
-                decimalNotSet = true;
-
-            }
-        });
-        division.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+                break;
+            case R.id.btnDivision:
                 setEquationText(" / ");
-                decimalNotSet = true;
-            }
-        });
-        equals.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                decimalNotSet = true;
+                break;
+            case R.id.btnEquals:
                 sbEquation.append(sb.toString());
                 double e = eval(sbEquation.toString());
                 clearStringBuilder();
                 sb.append(Double.toString(e));
                 textResult.setText(Double.toString(e));
-
                 clearEquationStringBuilder();
                 clearEquation();
-            }
-        });
+                pressedEqual = true;
+                break;
+            default:
+                break;
+
+
+
+
+        }
+    }
+    private void initButtonListeners() {
+        ce.setOnClickListener(this);
+        clear.setOnClickListener(this);
+        back.setOnClickListener(this);
+        nine.setOnClickListener(this);
+        eight.setOnClickListener(this);
+        seven.setOnClickListener(this);
+        six.setOnClickListener(this);
+        five.setOnClickListener(this);
+        four.setOnClickListener(this);
+        three.setOnClickListener(this);
+        two.setOnClickListener(this);
+        one.setOnClickListener(this);
+        zero.setOnClickListener(this);
+        neg.setOnClickListener(this);
+        decimal.setOnClickListener(this);
+        addition.setOnClickListener(this);
+        subtraction.setOnClickListener(this);
+        multiplication.setOnClickListener(this);
+        division.setOnClickListener(this);
+        equals.setOnClickListener(this);
     }
 
     private void clearResult() {
@@ -406,4 +396,5 @@ public class MainActivity extends AppCompatActivity {
             }
         }.parse();
     }
+
 }
