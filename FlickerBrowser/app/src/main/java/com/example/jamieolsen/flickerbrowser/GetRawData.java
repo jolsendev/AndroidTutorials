@@ -40,6 +40,10 @@ public class GetRawData {
         return mData;
     }
 
+    public void setmRawURL(String mRawURL) {
+        this.mRawURL = mRawURL;
+    }
+
     public void execute(){
         this.mDownloadStatus = DownloadStatus.PROCESSING;
         DownloadRawData downloadRawData = new DownloadRawData();

@@ -11,7 +11,7 @@ public class Photo {
     private String mTabs;
     private String mImage;
 
-    public Photo(String mImage, String mTitle, String mAuthor, String mAuthorId, String mLink, String mTabs) {
+    public Photo(String mTitle, String mAuthor, String mAuthorId, String mLink, String mTabs,String mImage) {
 
         this.mImage = mImage;
         this.mTitle = mTitle;
