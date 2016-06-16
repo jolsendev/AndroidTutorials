@@ -46,6 +46,10 @@ public class GetFlickerJsonData extends GetRawData {
         return mDestinationUri != null;
     }
 
+    public List<Photo> getMPhotos(){
+        return mPhoto;
+    }
+
     public void processResult() {
 
         if(getmDownloadStatus() != DownloadStatus.OK){
@@ -87,6 +91,8 @@ public class GetFlickerJsonData extends GetRawData {
             je.printStackTrace();
             Log.e(LOG_TAG, "Error processing json data");
         }
+
+
     }
 
     public class DownLoadJsonData extends DownloadRawData{
@@ -96,7 +102,9 @@ public class GetFlickerJsonData extends GetRawData {
         }
 
         protected String doInBackground(String... params){
-            return super.doInBackground(params);
+            String[] par = {mDestinationUri.toString()};
+            return super.doInBackground(par);
         }
+
     }
 }
