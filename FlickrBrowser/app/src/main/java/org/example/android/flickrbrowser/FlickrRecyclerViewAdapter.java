@@ -20,7 +20,7 @@ public class FlickrRecyclerViewAdapter extends RecyclerView.Adapter<FlickrImageV
     private final String LOG_TAG = FlickrRecyclerViewAdapter.class.getSimpleName();
 
     public FlickrRecyclerViewAdapter(Context context, List<Photo> photosList) {
-        this.mContext = context;
+        mContext = context;
         this.mPhotosList = photosList;
     }
 
