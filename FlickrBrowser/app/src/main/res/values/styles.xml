@@ -1,8 +1,7 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-    </style>
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar"></style>
 
     <style name="Theme.Base" parent="AppTheme">
         <item name="colorPrimary">@color/flickrPrimaryBackgroundColor</item>
@@ -13,7 +12,7 @@
         <item name="android:windowBackground">@color/flickrBackgroundColor</item>
     </style>
 
-    <style name="Theme.Flickr" parent="Theme.Base"/>
+    <style name="Theme.Flickr" parent="Theme.Base" />
 
     <style name="ActionBarThemeOverlay" parent="">
         <item name="android:textColorPrimary">@color/flickrPrimaryTextColor</item>
@@ -28,8 +27,8 @@
         <item name="android:textSize">18sp</item>
     </style>
 
-    <style name="Theme.Flickr.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+    <style name="Theme.Flickr.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
-    <style name="Theme.Flickr.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
+    <style name="Theme.Flickr.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 </resources>

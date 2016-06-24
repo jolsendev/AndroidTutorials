@@ -1,9 +1,18 @@
 package org.example.android.flickrbrowser;
 
+import java.io.Serializable;
+
 /**
  * Created by dev on 17/02/2016.
  */
-public class Photo {
+public class Photo implements Serializable {
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
+    private static final long serialVersionUID = 1L;
+
     private String mTitle;
     private String mAuthor;
     private String mAuthorId;
