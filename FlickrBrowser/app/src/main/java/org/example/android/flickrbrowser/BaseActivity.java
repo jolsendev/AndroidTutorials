@@ -9,6 +9,7 @@ import android.support.v7.widget.Toolbar;
 public class BaseActivity extends AppCompatActivity {
 
     private Toolbar mToolbar;
+    public static final String FLICKR_QUERY = "FLICKR_QUERY";
 
     protected Toolbar activateToolbar() {
         if(mToolbar == null) {
@@ -20,7 +21,7 @@ public class BaseActivity extends AppCompatActivity {
         return mToolbar;
     }
 
-    protected Toolbar ActivateToolbarWithHomeEnabled(){
+    protected Toolbar activateToolbarWithHomeEnabled(){
         activateToolbar();
         if(mToolbar != null){
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
