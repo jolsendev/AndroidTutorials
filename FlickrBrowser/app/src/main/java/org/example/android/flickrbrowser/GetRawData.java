@@ -50,6 +50,9 @@ public class GetRawData {
         downloadRawData.execute(mRawUrl);
     }
 
+    /**
+     * This class downloads the Raw data from URL
+     */
     public class DownloadRawData extends AsyncTask<String, Void, String> {
 
         protected void onPostExecute(String webData) {
@@ -100,6 +103,10 @@ public class GetRawData {
             } catch(IOException e) {
                 Log.e(LOG_TAG, "Error", e);
                 return null;
+
+                /**
+                 * This finally cleans up by disconnecting the url connection and closing the BuferedReader
+                 */
             } finally {
                 if(urlConnection != null) {
                     urlConnection.disconnect();
