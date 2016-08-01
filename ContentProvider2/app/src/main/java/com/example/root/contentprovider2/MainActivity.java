@@ -10,10 +10,13 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.ListViewCompat;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +24,7 @@ import java.util.jar.Manifest;
 
 public class MainActivity extends AppCompatActivity {
 
+    private ListView contactNames;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        contactNames = (ListView) findViewById(R.id.contact_names);
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -41,7 +46,8 @@ public class MainActivity extends AppCompatActivity {
                         contacts.add(cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME)));
                     }while (cursor.moveToNext());
                 }
-
+                ArrayAdapter<String> adapter = new ArrayAdapter<String>(getBaseContext(), R.layout.contact_detail, R.id.name, contacts);
+                contactNames.setAdapter(adapter);
             }
         });
 
@@ -55,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         ActivityCompat.requestPermissions(MainActivity.this, new String[]  {android.Manifest.permission.READ_CONTACTS}, REQUEST_CODE_ASK_PERMISSIONS);
+
     }
 
     @Override
