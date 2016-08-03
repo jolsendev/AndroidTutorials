@@ -5,11 +5,11 @@ import android.content.ContentValues;
 import android.content.UriMatcher;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteQueryBuilder;
 import android.net.Uri;
 import android.provider.BaseColumns;
 import android.support.annotation.Nullable;
+import android.text.TextUtils;
 import android.util.Log;
 
 /**
@@ -94,22 +94,47 @@ public class FriendsProvider extends ContentProvider{
     }
 
     @Override
-    public int delete(Uri uri, String selections, String[] selectionArgs) {
-        Log.v(TAG,"delete(Uri="+uri+", String="+selections+", String[]="+selectionArgs+")");
+    public int delete(Uri uri, String selection, String[] selectionArgs) {
+        Log.v(TAG,"delete(Uri="+uri+", String="+selection+", String[]="+selectionArgs+")");
         final SQLiteDatabase db = mOpenHelper.getReadableDatabase();
         final int match= sUriMatcher.match(uri);
+
+        if(uri.equals(FriendsContract.BASE_CONTENT_URI)){
+            deleteDatabase();
+            return 0;
+        }
+
         switch (match){
             case FRIENDS:
-                int recordId = db.delete(FriendsDatabase.Tables.FRIENDS, selections, selectionArgs);
-                return recordId;
+                //do nothing
+                break;
+            case FRIENDS_ID:
+                String recordId = FriendsContract.Friends.getFriendId(uri);//db.delete(FriendsDatabase.Tables.FRIENDS, selection, selectionArgs)
+                String selectionCriteria = BaseColumns._ID+"="+recordId+(!TextUtils.isEmpty(selection)? "AND ("+selection+")": "" );
+                return db.delete(FriendsDatabase.Tables.FRIENDS, selectionCriteria, selectionArgs);
             default:
                 throw new IllegalArgumentException("Unknown Uri");
         }
+        return 0;
     }
 
     @Override
-    public int update(Uri uri, ContentValues contentValues, String s, String[] strings) {
-        return 0;
+    public int update(Uri uri, ContentValues contentValues, String selection, String[] selectionArgs) {
+        Log.v(TAG,"update(Uri="+uri+", ContentValues="+contentValues+", String="+selection+", String[]="+selectionArgs+")");
+        final SQLiteDatabase db = mOpenHelper.getReadableDatabase();
+        final int match= sUriMatcher.match(uri);
+        String selectionCriteria = selection;
+        switch (match){
+            case FRIENDS:
+                break;
+            case FRIENDS_ID:
+                String id = FriendsContract.Friends.getFriendId(uri);
+                selectionCriteria = BaseColumns._ID+"="+id+(!TextUtils.isEmpty(selection) ? "AND ("+selection+")" : "");
+                break;
+            default:
+                throw new IllegalArgumentException("Unknown Uri");
+        }
+        return db.update(FriendsDatabase.Tables.FRIENDS,contentValues,selectionCriteria,selectionArgs);
     }
 
     private void deleteDatabase(){
