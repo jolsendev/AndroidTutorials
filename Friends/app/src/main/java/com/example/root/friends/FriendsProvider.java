@@ -94,8 +94,17 @@ public class FriendsProvider extends ContentProvider{
     }
 
     @Override
-    public int delete(Uri uri, String s, String[] strings) {
-        return 0;
+    public int delete(Uri uri, String selections, String[] selectionArgs) {
+        Log.v(TAG,"delete(Uri="+uri+", String="+selections+", String[]="+selectionArgs+")");
+        final SQLiteDatabase db = mOpenHelper.getReadableDatabase();
+        final int match= sUriMatcher.match(uri);
+        switch (match){
+            case FRIENDS:
+                int recordId = db.delete(FriendsDatabase.Tables.FRIENDS, selections, selectionArgs);
+                return recordId;
+            default:
+                throw new IllegalArgumentException("Unknown Uri");
+        }
     }
 
     @Override
