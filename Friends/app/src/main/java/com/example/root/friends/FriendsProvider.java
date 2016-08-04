@@ -79,7 +79,7 @@ public class FriendsProvider extends ContentProvider{
     @Override
     public Uri insert(Uri uri, ContentValues contentValues) {
         Log.v(TAG,"insert(uri= "+uri+", ContentValues= "+contentValues.toString()+")");
-        final SQLiteDatabase db = mOpenHelper.getReadableDatabase();
+        final SQLiteDatabase db = mOpenHelper.getWritableDatabase();
         final int match = sUriMatcher.match(uri);
         switch (match){
             case FRIENDS:
@@ -96,7 +96,7 @@ public class FriendsProvider extends ContentProvider{
     @Override
     public int delete(Uri uri, String selection, String[] selectionArgs) {
         Log.v(TAG,"delete(Uri="+uri+", String="+selection+", String[]="+selectionArgs+")");
-        final SQLiteDatabase db = mOpenHelper.getReadableDatabase();
+        final SQLiteDatabase db = mOpenHelper.getWritableDatabase();
         final int match= sUriMatcher.match(uri);
 
         if(uri.equals(FriendsContract.BASE_CONTENT_URI)){
@@ -121,7 +121,7 @@ public class FriendsProvider extends ContentProvider{
     @Override
     public int update(Uri uri, ContentValues contentValues, String selection, String[] selectionArgs) {
         Log.v(TAG,"update(Uri="+uri+", ContentValues="+contentValues+", String="+selection+", String[]="+selectionArgs+")");
-        final SQLiteDatabase db = mOpenHelper.getReadableDatabase();
+        final SQLiteDatabase db = mOpenHelper.getWritableDatabase();
         final int match= sUriMatcher.match(uri);
         String selectionCriteria = selection;
         switch (match){
