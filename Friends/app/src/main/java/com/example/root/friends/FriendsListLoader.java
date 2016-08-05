@@ -27,7 +27,8 @@ public class FriendsListLoader extends AsyncTaskLoader<List<Friend>> {
     }
     @Override
     public List<Friend> loadInBackground() {
-        String[] projection = {BaseColumns._ID,
+        String[] projection = {
+                BaseColumns._ID,
                 FriendsContract.FriendsColumns.FRIENDS_NAME,
                 FriendsContract.FriendsColumns.FRIENDS_PHONENUMBER,
                 FriendsContract.FriendsColumns.FRIENDS_EMAIL
@@ -47,6 +48,45 @@ public class FriendsListLoader extends AsyncTaskLoader<List<Friend>> {
             }
         }
         return entry;
+    }
+
+    @Override
+    protected void onStartLoading() {
+        if(mFriend != null){
+            deliverResult(mFriend);
+        }
+
+        if(takeContentChanged() || mFriend == null){
+            forceLoad();
+        }
+    }
+
+    @Override
+    protected void onStopLoading() {
+        cancelLoad();
+    }
+
+    @Override
+    protected void onReset() {
+        onStopLoading();
+        if(mCursor != null){
+            mCursor.close();
+        }
+
+        mFriend = null;
+    }
+
+    @Override
+    public void onCanceled(List<Friend> friends) {
+        super.onCanceled(friends);
+        if(mCursor != null){
+            mCursor.close();
+        }
+    }
+
+    @Override
+    public void forceLoad() {
+        super.forceLoad();
     }
 
     @Override
