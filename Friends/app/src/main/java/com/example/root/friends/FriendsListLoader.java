@@ -1,11 +1,12 @@
 package com.example.root.friends;
 
-import android.content.AsyncTaskLoader;
+
 import android.content.ContentResolver;
 import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
 import android.provider.BaseColumns;
+import android.support.v4.content.AsyncTaskLoader;
 import android.util.Log;
 
 import java.util.ArrayList;
