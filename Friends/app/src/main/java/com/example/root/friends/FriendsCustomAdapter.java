@@ -1,16 +1,71 @@
 package com.example.root.friends;
 
-import android.support.v4.app.FragmentActivity;
+import android.content.Context;
 import android.support.v4.app.FragmentManager;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.TextView;
 
 import java.util.List;
 
 /**
  * Created by root on 8/5/16.
  */
-public class FriendsCustomAdapter {
+public class FriendsCustomAdapter extends ArrayAdapter<Friend>{
     private List<Friend> data;
-    public FriendsCustomAdapter(FragmentActivity activity, FragmentManager childFragmentManager) {
+    private LayoutInflater mLayoutInflater;
+    private FragmentManager sFragmentManager;
+
+
+    public FriendsCustomAdapter(Context context, FragmentManager childFragmentManager) {
+        super(context, android.R.layout.simple_list_item_2);
+        mLayoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        sFragmentManager = childFragmentManager;
+    }
+
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+        final View view;
+        if(convertView == null){
+            view = mLayoutInflater.inflate(R.layout.custom_friend,parent, false);
+        }else{
+            view = convertView;
+        }
+
+        final Friend friend = getItem(position);
+        final int _id = friend.getid();
+        final String name = friend.getName();
+        final String phone = friend.getPhone();
+        final String email = friend.getEmail();
+        ((TextView) view.findViewById(R.id.friend_name)).setText(name);
+        ((TextView) view.findViewById(R.id.friend_email)).setText(email);
+        ((TextView) view.findViewById(R.id.friend_phone)).setText(phone);
+        /**
+        Button editButton = (Button) view.findViewById(R.id.edit);
+        editButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), EditActivity.class);
+                intent.putExtra(FriendsContract.FriendsColumns.FRIENDS_ID, String.valueOf(_id) );
+                intent.putExtra(FriendsContract.FriendsColumns.FRIENDS_NAME, name );
+                intent.putExtra(FriendsContract.FriendsColumns.FRIENDS_EMAIL, email );
+                intent.putExtra(FriendsContract.FriendsColumns.FRIENDS_PHONENUMBER, phone );
+                getContext().startActivity(intent);
+            }
+        });
+
+        Button deleteButton = (Button) view.findViewById(R.id.delete);
+        deleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FriendsDiolog diolog = new FriendsDiolog;
+                Bundle args = new Bundle();
+                args.putString(FriendsDiolog.DiologType, FriendsDiolog.DELETE_RECORD);
+            }
+        });**/
+        return view;
     }
 
     public void setData(List<Friend> data) {
