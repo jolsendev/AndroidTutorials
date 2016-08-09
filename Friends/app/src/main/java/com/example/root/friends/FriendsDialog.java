@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
@@ -17,10 +18,12 @@ import android.widget.TextView;
  * Created by root on 8/8/16.
  */
 public class FriendsDialog extends android.support.v4.app.DialogFragment {
+    private final static String LOG_TAG = FriendsDialog.class.getSimpleName();
     private LayoutInflater mLayoutInflater;
     public final static String DIALOG_TYPE = "command";
     public final static String DELETE_RECORD= "deleteRecord";
     public final static String DELETE_DATABASE= "deleteDatabase";
+    public final static String CONFIRM_EXIT = "confirmExit";
 
     @NonNull
     @Override
@@ -47,7 +50,7 @@ public class FriendsDialog extends android.support.v4.app.DialogFragment {
             });
         }else if(command.equals(DELETE_DATABASE)){
             TextView popup = (TextView) view.findViewById(R.id.popup_message);
-            popup.setText("Are you sure= you want to delete "+name+" from your friends list?");
+            popup.setText("Are you sure= you want to delete from your friends list?");
             builder.setView(view).setPositiveButton("OK", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
@@ -59,6 +62,17 @@ public class FriendsDialog extends android.support.v4.app.DialogFragment {
                     startActivity(intent);
                 }
             });
+        }else if(command.equals(CONFIRM_EXIT)){
+            TextView popup = (TextView) view.findViewById(R.id.popup_message);
+            popup.setText("Are you sure you want to exit without saving");
+            builder.setView(view).setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    getActivity().finish();
+                }
+            });
+        }else{
+            Log.d(LOG_TAG, "Invalid command pass parameter");
         }
         return builder.create();
 
