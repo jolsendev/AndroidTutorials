@@ -1,11 +1,14 @@
 package com.example.root.friends;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.List;
@@ -42,7 +45,7 @@ public class FriendsCustomAdapter extends ArrayAdapter<Friend>{
         ((TextView) view.findViewById(R.id.friend_name)).setText(name);
         ((TextView) view.findViewById(R.id.friend_email)).setText(email);
         ((TextView) view.findViewById(R.id.friend_phone)).setText(phone);
-        /**
+
         Button editButton = (Button) view.findViewById(R.id.edit);
         editButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,15 +63,22 @@ public class FriendsCustomAdapter extends ArrayAdapter<Friend>{
         deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FriendsDiolog diolog = new FriendsDiolog;
+                FriendsDialog dialog = new FriendsDialog;
                 Bundle args = new Bundle();
-                args.putString(FriendsDiolog.DiologType, FriendsDiolog.DELETE_RECORD);
+                args.putString(FriendsDialog.DIALOG_TYPE, FriendsDialog.DELETE_RECORD);
+                dialog.setArguments(args);
+                dialog.show(sFragmentManager, "delete-record");
             }
-        });**/
+        });
         return view;
     }
 
     public void setData(List<Friend> data) {
-        this.data = data;
+        clear();
+        if(data != null){
+            for(Friend friend : data){
+                add(friend);
+            }
+        }
     }
 }

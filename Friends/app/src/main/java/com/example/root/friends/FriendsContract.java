@@ -21,7 +21,7 @@ public class FriendsContract {
     public static final String[] TOP_LEVEL_PATHS = {
             PATH_FRIENDS
     };
-    public static class Friends implements FriendsColumns, BaseColumns{
+    public static class Friend implements FriendsColumns, BaseColumns{
         public static final Uri CONTENT_URI = BASE_CONTENT_URI.buildUpon().appendEncodedPath(PATH_FRIENDS).build();
 
         public static final String CONTENT_TYPE = "vnd.android.cursor.dir/vnd."+CONTENT_AUTHORITY+".friends";

@@ -1,0 +1,10 @@
+sudo apt-get install compiz compiz-plugins compizconfig-settings-manager
+
+compiz --replace
+
+gsettings set org.mate.session.required-components windowmanager compiz
+
+sudo apt-get install openjdk-8-jdk
+
+
+sudo apt-get install openjdk-8-jdk

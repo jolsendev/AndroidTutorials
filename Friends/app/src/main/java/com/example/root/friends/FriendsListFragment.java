@@ -25,7 +25,7 @@ public class FriendsListFragment extends ListFragment implements LoaderManager.L
         setHasOptionsMenu(true);
         mResolver = getActivity().getContentResolver();
         mFriendsAdapter = new FriendsCustomAdapter(getActivity(), getChildFragmentManager());
-        setEmptyText("No Friends");
+        setEmptyText("No Friend");
         setListAdapter(mFriendsAdapter);
         setListShown(false);
         getLoaderManager().initLoader(LOADER_ID, null, this);

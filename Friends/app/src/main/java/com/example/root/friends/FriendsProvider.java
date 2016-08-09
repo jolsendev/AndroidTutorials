@@ -42,9 +42,9 @@ public class FriendsProvider extends ContentProvider{
         final int match = sUriMatcher.match(uri);
         switch(match){
             case FRIENDS:
-                return FriendsContract.Friends.CONTENT_TYPE;
+                return FriendsContract.Friend.CONTENT_TYPE;
             case FRIENDS_ID:
-                return FriendsContract.Friends.CONTENT_ITEM_TYPE;
+                return FriendsContract.Friend.CONTENT_ITEM_TYPE;
             default:
                 throw new IllegalArgumentException("Unknown Uri");
         }
@@ -63,7 +63,7 @@ public class FriendsProvider extends ContentProvider{
                 //do nothing
                 break;
             case FRIENDS_ID:
-                String id = FriendsContract.Friends.getFriendId(uri);
+                String id = FriendsContract.Friend.getFriendId(uri);
                 queryBuilder.appendWhere(BaseColumns._ID +"="+id);
                 break;
             default:
@@ -84,7 +84,7 @@ public class FriendsProvider extends ContentProvider{
         switch (match){
             case FRIENDS:
                 long recordId = db.insertOrThrow(FriendsDatabase.Tables.FRIENDS, null, contentValues);
-                return FriendsContract.Friends.BuildFriendUri(String.valueOf(recordId));
+                return FriendsContract.Friend.BuildFriendUri(String.valueOf(recordId));
             default:
                 throw new IllegalArgumentException("Unknown Uri");
 
@@ -109,7 +109,7 @@ public class FriendsProvider extends ContentProvider{
                 //do nothing
                 break;
             case FRIENDS_ID:
-                String recordId = FriendsContract.Friends.getFriendId(uri);//db.delete(FriendsDatabase.Tables.FRIENDS, selection, selectionArgs)
+                String recordId = FriendsContract.Friend.getFriendId(uri);//db.delete(FriendsDatabase.Tables.FRIENDS, selection, selectionArgs)
                 String selectionCriteria = BaseColumns._ID+"="+recordId+(!TextUtils.isEmpty(selection)? "AND ("+selection+")": "" );
                 return db.delete(FriendsDatabase.Tables.FRIENDS, selectionCriteria, selectionArgs);
             default:
@@ -128,7 +128,7 @@ public class FriendsProvider extends ContentProvider{
             case FRIENDS:
                 break;
             case FRIENDS_ID:
-                String id = FriendsContract.Friends.getFriendId(uri);
+                String id = FriendsContract.Friend.getFriendId(uri);
                 selectionCriteria = BaseColumns._ID+"="+id+(!TextUtils.isEmpty(selection) ? "AND ("+selection+")" : "");
                 break;
             default:

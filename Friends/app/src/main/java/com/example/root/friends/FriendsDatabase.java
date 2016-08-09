@@ -1,10 +1,8 @@
 package com.example.root.friends;
 
 import android.content.Context;
-import android.database.DatabaseErrorHandler;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.os.Build;
 import android.provider.BaseColumns;
 
 /**
@@ -29,9 +27,9 @@ public class FriendsDatabase extends SQLiteOpenHelper{
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         sqLiteDatabase.execSQL("CREATE TABLE "+Tables.FRIENDS+" (" +
                 BaseColumns._ID+" INTEGER PRIMARY KEY AUTOINCREMENT,"
-                + FriendsContract.Friends.FRIENDS_NAME+" TEXT NOT NULL,"
-                + FriendsContract.Friends.FRIENDS_EMAIL+" TEXT NOT NULL,"
-                + FriendsContract.Friends.FRIENDS_PHONENUMBER+" TEXT NOT NULL)"
+                + FriendsContract.Friend.FRIENDS_NAME+" TEXT NOT NULL,"
+                + FriendsContract.Friend.FRIENDS_EMAIL+" TEXT NOT NULL,"
+                + FriendsContract.Friend.FRIENDS_PHONENUMBER+" TEXT NOT NULL)"
         );
     }
 
