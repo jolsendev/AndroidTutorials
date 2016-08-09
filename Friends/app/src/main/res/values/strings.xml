@@ -4,4 +4,5 @@
     <string name="add">Add</string>
     <string name="add_title">Add Title</string>
     <string name="delete_title">Delete Title</string>
+    <string name="save">Save</string>
 </resources>
