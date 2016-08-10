@@ -5,4 +5,5 @@
     <string name="add_title">Add Title</string>
     <string name="delete_title">Delete Title</string>
     <string name="save">Save</string>
+    <string name="enter_name">Enter Name</string>
 </resources>

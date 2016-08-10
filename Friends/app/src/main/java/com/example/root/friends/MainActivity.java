@@ -52,8 +52,8 @@ public class MainActivity extends FragmentActivity {
                 break;
 
             case R.id.searchRecords:
-                Intent searchIntent = new Intent(MainActivity.this, SearchActivity.class);
-                startActivity(searchIntent);
+                //Intent searchIntent = new Intent(MainActivity.this, SearchActivity.class);
+                //startActivity(searchIntent);
         }
 
         return super.onOptionsItemSelected(item);
