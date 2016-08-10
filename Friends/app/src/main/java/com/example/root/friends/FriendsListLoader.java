@@ -1,6 +1,5 @@
 package com.example.root.friends;
 
-
 import android.content.ContentResolver;
 import android.content.Context;
 import android.database.Cursor;
@@ -13,51 +12,75 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by a5w5nzz on 8/4/2016.
+ * Created by dev on 2/26/15.
+ * Updated to API 22 on 5/6/15
  */
 public class FriendsListLoader extends AsyncTaskLoader<List<Friend>> {
-    private static final String LOG_TEG = FriendsListLoader.class.getSimpleName();
-    private List<Friend> mFriend;
+    private static final String LOG_TAG = FriendsListLoader.class.getSimpleName();
+    private List<Friend> mFriends;
     private ContentResolver mContentResolver;
     private Cursor mCursor;
 
-    public FriendsListLoader(Context context, Uri uri, ContentResolver contentResolver){
+    public FriendsListLoader(Context context, Uri uri, ContentResolver contentResolver) {
         super(context);
-        this.mContentResolver = contentResolver;
-
+        mContentResolver = contentResolver;
     }
+
     @Override
     public List<Friend> loadInBackground() {
-        String[] projection = {
-                BaseColumns._ID,
+        String[] projection = { BaseColumns._ID,
                 FriendsContract.FriendsColumns.FRIENDS_NAME,
                 FriendsContract.FriendsColumns.FRIENDS_PHONENUMBER,
-                FriendsContract.FriendsColumns.FRIENDS_EMAIL
-        };
-        List<Friend> entry = new ArrayList<Friend>();
+                FriendsContract.FriendsColumns.FRIENDS_EMAIL };
+        List<Friend> entries = new ArrayList<Friend>();
+
         mCursor = mContentResolver.query(FriendsContract.URI_TABLE, projection, null, null, null);
-        if(mCursor != null){
-            if(mCursor.moveToFirst()){
-                do{
-                    int _id = mCursor.getColumnIndex(BaseColumns._ID);
-                    String name = mCursor.getString(mCursor.getColumnIndex(FriendsContract.FriendsColumns.FRIENDS_NAME));
-                    String phone = mCursor.getString(mCursor.getColumnIndex(FriendsContract.FriendsColumns.FRIENDS_PHONENUMBER));
-                    String email = mCursor.getString(mCursor.getColumnIndex(FriendsContract.FriendsColumns.FRIENDS_EMAIL));
-                    Friend friend = new Friend(_id, phone,name,email);
-                    entry.add(friend);
-                }while (mCursor.moveToNext());
+        if(mCursor != null) {
+            if(mCursor.moveToFirst()) {
+                do {
+                    int _id = mCursor.getInt(mCursor.getColumnIndex(BaseColumns._ID));
+                    String name = mCursor.getString(
+                            mCursor.getColumnIndex(FriendsContract.FriendsColumns.FRIENDS_NAME));
+                    String phone = mCursor.getString(
+                            mCursor.getColumnIndex(FriendsContract.FriendsColumns.FRIENDS_PHONENUMBER));
+                    String email = mCursor.getString(
+                            mCursor.getColumnIndex(FriendsContract.FriendsColumns.FRIENDS_EMAIL));
+                    Friend friend = new Friend(_id, name, phone, email);
+                    entries.add(friend);
+                } while(mCursor.moveToNext());
             }
         }
-        return entry;
+        return entries;
+    }
+
+    @Override
+    public void deliverResult(List<Friend> friends) {
+        if(isReset()) {
+            if(friends != null) {
+                mCursor.close();
+            }
+        }
+
+        List<Friend> oldFriendList = mFriends;
+        if(mFriends == null || mFriends.size() == 0) {
+            Log.d(LOG_TAG, "+++++++++ No Data returned");
+        }
+        mFriends = friends;
+        if(isStarted()) {
+            super.deliverResult(friends);
+        }
+        if(oldFriendList != null && oldFriendList != friends) {
+            mCursor.close();
+        }
     }
 
     @Override
     protected void onStartLoading() {
-        if(mFriend != null){
-            deliverResult(mFriend);
+        if(mFriends != null) {
+            deliverResult(mFriends);
         }
 
-        if(takeContentChanged() || mFriend == null){
+        if(takeContentChanged() | mFriends == null) {
             forceLoad();
         }
     }
@@ -70,17 +93,17 @@ public class FriendsListLoader extends AsyncTaskLoader<List<Friend>> {
     @Override
     protected void onReset() {
         onStopLoading();
-        if(mCursor != null){
+        if(mCursor != null) {
             mCursor.close();
         }
 
-        mFriend = null;
+        mFriends = null;
     }
 
     @Override
     public void onCanceled(List<Friend> friends) {
         super.onCanceled(friends);
-        if(mCursor != null){
+        if(mCursor != null) {
             mCursor.close();
         }
     }
@@ -88,28 +111,5 @@ public class FriendsListLoader extends AsyncTaskLoader<List<Friend>> {
     @Override
     public void forceLoad() {
         super.forceLoad();
-    }
-
-    @Override
-    public void deliverResult(List<Friend> friends) {
-        if(isReset()){
-            if(friends != null){
-                mCursor.close();
-            }
-        }
-
-        List<Friend> oldFriendsList = mFriend;
-        if(mFriend == null || mFriend.size()==0){
-            Log.d(LOG_TEG,"+++++ No Data Returned");
-        }
-        mFriend = friends;
-
-        if(isStarted()){
-            super.deliverResult(friends);
-        }
-
-        if(oldFriendsList != friends){
-            mCursor.close();
-        }
     }
 }

@@ -53,7 +53,7 @@ public class EditActivity extends FragmentActivity {
                 values.put(FriendsContract.FriendsColumns.FRIENDS_PHONENUMBER, mPhoneTextView.getText().toString());
                 values.put(FriendsContract.FriendsColumns.FRIENDS_EMAIL, mEmailTextView.getText().toString());
                 //send the id we are working on
-                Uri uri = FriendsContract.Friend.BuildFriendUri(_id);
+                Uri uri = FriendsContract.Friend.buildFriendUri(_id);
                 //populate the fields on the screen
                 int recordsUpdated = contentResolver.update(uri, values, null, null);
                 Log.d(LOG_TAG, "Number of records that were updated: "+recordsUpdated);

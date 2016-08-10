@@ -41,7 +41,7 @@ public class FriendsDialog extends android.support.v4.app.DialogFragment {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     ContentResolver contentResolver = getActivity().getContentResolver();
-                    Uri uri = FriendsContract.Friend.BuildFriendUri(String.valueOf(_id));
+                    Uri uri = FriendsContract.Friend.buildFriendUri(String.valueOf(_id));
                     contentResolver.delete(uri,null,null);
                     Intent intent = new Intent(getActivity().getApplicationContext(), MainActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

@@ -84,7 +84,7 @@ public class FriendsProvider extends ContentProvider{
         switch (match){
             case FRIENDS:
                 long recordId = db.insertOrThrow(FriendsDatabase.Tables.FRIENDS, null, contentValues);
-                return FriendsContract.Friend.BuildFriendUri(String.valueOf(recordId));
+                return FriendsContract.Friend.buildFriendUri(String.valueOf(recordId));
             default:
                 throw new IllegalArgumentException("Unknown Uri");
 
