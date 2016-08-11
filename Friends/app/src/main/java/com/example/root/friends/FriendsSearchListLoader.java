@@ -36,7 +36,7 @@ public class FriendsSearchListLoader extends AsyncTaskLoader<List<Friend>> {
                 FriendsContract.FriendsColumns.FRIENDS_EMAIL
         };
         List<Friend> entry = new ArrayList<Friend>();
-        String selection = FriendsContract.FriendsColumns.FRIENDS_NAME + " Like " + filterText+"%'";
+        String selection = FriendsContract.FriendsColumns.FRIENDS_NAME + " Like '" + filterText+"%'";
         mCursor = mContentResolver.query(FriendsContract.URI_TABLE, projection, selection, null, null);
         if(mCursor != null){
             if(mCursor.moveToFirst()){

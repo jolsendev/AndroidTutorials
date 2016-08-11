@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * Created by root on 8/8/16.
@@ -35,11 +36,13 @@ public class FriendsDialog extends android.support.v4.app.DialogFragment {
         if(command.equals(DELETE_RECORD)){
             final int _id = getArguments(). getInt(FriendsContract.FriendsColumns.FRIENDS_ID);
             String name = getArguments().getString(FriendsContract.FriendsColumns.FRIENDS_NAME);
+
             TextView popup = (TextView) view.findViewById(R.id.popup_message);
-            popup.setText("Are you sure= you want to delete "+name+" from your friends list?");
+            popup.setText("Are you sure you want to delete "+name+" from your friends list?");
             builder.setView(view).setPositiveButton("OK", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
+                    Toast.makeText(getActivity(), "Deleting record "+_id, Toast.LENGTH_LONG).show();
                     ContentResolver contentResolver = getActivity().getContentResolver();
                     Uri uri = FriendsContract.Friend.buildFriendUri(String.valueOf(_id));
                     contentResolver.delete(uri,null,null);
