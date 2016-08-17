@@ -13,11 +13,11 @@ import java.util.List;
 /**
  * Created by root on 8/16/16.
  */
-public class NavagationDrawerAdapter extends BaseAdapter {
+public class NavigationDrawerAdapter extends BaseAdapter {
     private List<NavigationDrawerItem> mDrawerItems;
     private LayoutInflater mLayoutInflater;
 
-    public NavagationDrawerAdapter(Context context, List<NavigationDrawerItem> mDrawerItems) {
+    public NavigationDrawerAdapter(Context context, List<NavigationDrawerItem> mDrawerItems) {
         super();
         this.mDrawerItems = mDrawerItems;
         mLayoutInflater.from(context);
