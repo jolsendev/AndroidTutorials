@@ -114,7 +114,6 @@ public class GetFlickrJsonData extends GetRawData {
             String[] par = { mDestinationUri.toString() };
             return super.doInBackground(par);
         }
-
     }
 
 }
