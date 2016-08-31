@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.GridView;
+import android.widget.ListView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -24,11 +25,14 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 
 public class PopularMovieFragment extends Fragment {
     public List<Movie> mMovies;
+    public GridView gridview;
+    public ArrayAdapter<String> mAdapter;
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
@@ -38,9 +42,38 @@ public class PopularMovieFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        View v = inflater.inflate(R.layout.fragment_popular_movie,container, false);
-        GridView gridview = (GridView) v.findViewById(R.id.gridview);
-        gridview.setAdapter(new ArrayAdapter(getActivity(), R.layout.fragment_popular_movie, getImageUrl()));
+
+        String[] movieArray = {
+                "http://image.tmdb.org/t/p/w185//e1mjopzAS2KNsvpbpahQ1a6SkSn.jpg",
+                "http://image.tmdb.org/t/p/w185//lFSSLTlFozwpaGlO31OoUeirBgQ.jpg",
+                "http://image.tmdb.org/t/p/w185//hU0E130tsGdsYa4K9lc3Xrn5Wyt.jpg",
+                "http://image.tmdb.org/t/p/w185//5N20rQURev5CNDcMjHVUZhpoCNC.jpg",
+                "http://image.tmdb.org/t/p/w185//vOipe2myi26UDwP978hsYOrnUWC.jpg",
+                "http://image.tmdb.org/t/p/w185//cGOPbv9wA5gEejkUN892JrveARt.jpg",
+                "http://image.tmdb.org/t/p/w185//inVq3FRqcYIRl2la8iZikYYxFNR.jpg",
+                "http://image.tmdb.org/t/p/w185//e3lBJCedHnZPfNfmBArKHZXXNC0.jpg",
+                "http://image.tmdb.org/t/p/w185//bWUeJHbKIyT306WtJFRHoSzX9nk.jpg",
+                "http://image.tmdb.org/t/p/w185//vNCeqxbKyDHL9LUza03V2Im16wB.jpg",
+                "http://image.tmdb.org/t/p/w185//b77l5vmp6PYsc98LE6Uf1mXtmHh.jpg",
+                "http://image.tmdb.org/t/p/w185//kJ6eMKlY1I8vVUosWtfP7qbCugL.jpg",
+                "http://image.tmdb.org/t/p/w185//zSouWWrySXshPCT4t3UKCQGayyo.jpg",
+                "http://image.tmdb.org/t/p/w185//5aGhaIHYuQbqlHWvWYqMCnj40y2.jpg",
+                "http://image.tmdb.org/t/p/w185//weUSwMdQIa3NaXVzwUoIIcAi85d.jpg",
+                "http://image.tmdb.org/t/p/w185//1ZQVHkvOegv5wVzxD2fphcxl1Ba.jpg",
+                "http://image.tmdb.org/t/p/w185//3ioyAtm0wXDyPy330Y7mJAJEHpU.jpg",
+                "http://image.tmdb.org/t/p/w185//sM33SANp9z6rXW8Itn7NnG1GOEs.jpg",
+                "http://image.tmdb.org/t/p/w185//t2mZzQXjpQxmqtJOPpe8Dr2YpMl.jpg",
+                "http://image.tmdb.org/t/p/w185//w93GAiq860UjmgR6tU9h2T24vaV.jpg" };
+
+        mAdapter = new ArrayAdapter<String>(
+            getActivity(),
+            R.layout.gridview_item_movie,
+            R.id.textview,
+                Arrays.asList(movieArray));
+
+        View v = inflater.inflate(R.layout.activity_main,container, false);
+        gridview = (GridView) v.findViewById(R.id.gridview);
+        gridview.setAdapter(mAdapter);
         return v;
     }
 
@@ -76,20 +109,12 @@ public class PopularMovieFragment extends Fragment {
         moviesTask.execute(baseURI);
     }
 
-
-    private void addMoviesToArrayAdapter() {
-        for (Movie movie: mMovies) {
-            System.out.println(movie.toString());
-        }
-
-    }
     public class FetchPopularMoviesTask extends AsyncTask<String, Void, List<Movie>>{
 
         @Override
         protected void onPostExecute(List<Movie> movies) {
             super.onPostExecute(movies);
             mMovies = movies;
-            addMoviesToArrayAdapter();
         }
 
         @Override
