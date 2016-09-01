@@ -22,6 +22,7 @@ public class Movie implements Serializable {
     private Double voteCount;
     private boolean video;
     private Double voteAverage;
+    private String IMAGE_BASE_PATH = "http://image.tmdb.org/t/p/w185/";
 
 
 
@@ -83,7 +84,7 @@ public class Movie implements Serializable {
 
     public String getPosterPath() {
 
-        return posterPath;
+        return IMAGE_BASE_PATH+posterPath;
     }
 
     public boolean isAdult() {
@@ -119,7 +120,7 @@ public class Movie implements Serializable {
     }
 
     public String getBackdropPath() {
-        return backdropPath;
+        return IMAGE_BASE_PATH+backdropPath;
     }
 
     public Double getPopularity() {
