@@ -10,7 +10,6 @@ import android.widget.ImageView;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by A5W5NZZ on 8/31/2016.
@@ -46,12 +45,18 @@ public class CustomMovieAdapter extends BaseAdapter {
          if (view == null){
              view = mInflater.inflate(R.layout.gridview_image_item, null);
              ImageView imageItem = (ImageView) view.findViewById(R.id.thumbnail);
-             Picasso.with(mContext).load(mMovieList.get(position).getPosterPath()).into(imageItem);
+             Picasso.with(mContext)
+                     .load(mMovieList.get(position).getPosterPath())
+                     .into(imageItem);
          }
         return view;
     }
 
     public void add(Movie movie){
         mMovieList.add(movie);
+    }
+
+    public void clear() {
+        mMovieList.clear();
     }
 }

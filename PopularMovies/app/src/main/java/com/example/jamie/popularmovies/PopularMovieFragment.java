@@ -1,5 +1,6 @@
 package com.example.jamie.popularmovies;
 
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -10,9 +11,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.GridView;
-import android.widget.ListView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -26,7 +25,6 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -63,7 +61,6 @@ public class PopularMovieFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
 
         // this is where you would set up the adapter
-
         super.onCreate(savedInstanceState);
     }
 
@@ -78,12 +75,24 @@ public class PopularMovieFragment extends Fragment {
     }
 
     private void updateRawData() {
-        String baseURI = "http://api.themoviedb.org/3/discover/movie?primary_release_date.gte="+getThenDate()+"&primary_release_date.lte="+getToDate()+"&api_key=02a6d79992ed3e3da1f638dec4c74770";
+        String MOVIE_API_BASE_URL = "http://api.themoviedb.org/3/discover/movie";
+        String MOVIE_AFTER_DATE = "primary_release_date.gte";
+        String MOVIE_BEFORE_DATE = "primary_release_date.lte";
+        String MOIE_API_KEY = "api_key";
+        String API_KEY = "02a6d79992ed3e3da1f638dec4c74770";
+        //String baseURI = "http://api.themoviedb.org/3/discover/movie?primary_release_date.gte="+getAfterDate()+"&primary_release_date.lte="+getBeforeDate()+"&api_key=02a6d79992ed3e3da1f638dec4c74770";
+        Uri mDestinationUri = Uri.parse(MOVIE_API_BASE_URL).buildUpon()
+                .appendQueryParameter(MOVIE_AFTER_DATE, getAfterDate())
+                .appendQueryParameter(MOVIE_BEFORE_DATE, getBeforeDate())
+                .appendQueryParameter(MOIE_API_KEY, API_KEY)
+                .build();
+
         FetchPopularMoviesTask moviesTask = new FetchPopularMoviesTask();
-        moviesTask.execute(baseURI);
+        System.out.println(mDestinationUri.toString() +"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+        moviesTask.execute(mDestinationUri.toString());
     }
 
-    private String getToDate() {
+    private String getBeforeDate() {
         Date now;
         SimpleDateFormat formatter;
         formatter = new SimpleDateFormat("yyyy-MM-dd");
@@ -91,7 +100,7 @@ public class PopularMovieFragment extends Fragment {
         return formatter.format(now);
     }
 
-    private String getThenDate() {
+    private String getAfterDate() {
         Date then = new Date();
         Calendar cal = Calendar.getInstance();
         cal.setTime(then);
