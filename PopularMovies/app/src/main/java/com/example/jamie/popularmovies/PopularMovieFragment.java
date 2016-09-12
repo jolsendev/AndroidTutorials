@@ -1,5 +1,6 @@
 package com.example.jamie.popularmovies;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -11,6 +12,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.GridView;
 
 import org.json.JSONArray;
@@ -23,10 +25,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 
@@ -34,6 +33,8 @@ public class PopularMovieFragment extends Fragment {
     public List<Movie> mMovies;
     public GridView gridview;
     public CustomMovieAdapter mAdapter;
+    private Uri mPopularUri;
+
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
@@ -46,6 +47,17 @@ public class PopularMovieFragment extends Fragment {
         mAdapter = new CustomMovieAdapter(getActivity(), new ArrayList<Movie>());
         View v = inflater.inflate(R.layout.activity_main,container, false);
         gridview = (GridView) v.findViewById(R.id.gridview);
+
+        gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Movie myMovie = (Movie) mAdapter.getItem(i);
+//                Toast.makeText(getActivity(), myMovie.getOriginalTitle(), Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(getActivity(), MovieDetailView.class);
+                intent.putExtra(String.valueOf(MovieDetails.MOVIE_KEY), myMovie);
+                startActivity(intent);
+            }
+        });
         return v;
     }
 
@@ -75,41 +87,25 @@ public class PopularMovieFragment extends Fragment {
     }
 
     private void updateRawData() {
-        String MOVIE_API_BASE_URL = "http://api.themoviedb.org/3/discover/movie";
-        String MOVIE_AFTER_DATE = "primary_release_date.gte";
-        String MOVIE_BEFORE_DATE = "primary_release_date.lte";
-        String MOIE_API_KEY = "api_key";
+        String MOVIE_API_DISCOVER_BASE_URL = "http://api.themoviedb.org/3/discover/movie";
+        String MOVIE_API_POPULAR_BASE_URL = "http://api.themoviedb.org/3/movie/popular";
+        String MOVIE_API_TOP_RATED_URL = "http://api.themoviedb.org/3/movie/top_rated";
+        String MOVIE_SORT_BY = "sort_by";
+        String MOVIE_POPULARITY_DESC = "vote_average.desc";
+        String MOVIE_VOTE_COUNT = "vote_count";
+        String MOVIE_GREATER_THAN = "gte=50";
+        String MOVIE_API_KEY = "api_key";
         String API_KEY = "02a6d79992ed3e3da1f638dec4c74770";
-        //String baseURI = "http://api.themoviedb.org/3/discover/movie?primary_release_date.gte="+getAfterDate()+"&primary_release_date.lte="+getBeforeDate()+"&api_key=02a6d79992ed3e3da1f638dec4c74770";
-        Uri mDestinationUri = Uri.parse(MOVIE_API_BASE_URL).buildUpon()
-                .appendQueryParameter(MOVIE_AFTER_DATE, getAfterDate())
-                .appendQueryParameter(MOVIE_BEFORE_DATE, getBeforeDate())
-                .appendQueryParameter(MOIE_API_KEY, API_KEY)
-                .build();
 
+
+
+
+        mPopularUri = Uri.parse(MOVIE_API_TOP_RATED_URL).buildUpon()
+                .appendQueryParameter(MOVIE_API_KEY, API_KEY).build();
+        ///discover/movie?sort_by=popularity.desc
+        ///discover/movie/?certification_country=US&sort_by=vote_average.desc
         FetchPopularMoviesTask moviesTask = new FetchPopularMoviesTask();
-        System.out.println(mDestinationUri.toString() +"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-        moviesTask.execute(mDestinationUri.toString());
-    }
-
-    private String getBeforeDate() {
-        Date now;
-        SimpleDateFormat formatter;
-        formatter = new SimpleDateFormat("yyyy-MM-dd");
-        now = new Date();
-        return formatter.format(now);
-    }
-
-    private String getAfterDate() {
-        Date then = new Date();
-        Calendar cal = Calendar.getInstance();
-        cal.setTime(then);
-        cal.add(Calendar.MONTH, -6);
-        then = cal.getTime();
-        SimpleDateFormat formatter;
-        formatter = new SimpleDateFormat("yyyy-MM-dd");
-        return formatter.format(then);
-
+        moviesTask.execute(mPopularUri.toString());
     }
 
     public class FetchPopularMoviesTask extends AsyncTask<String, Void, List<Movie>>{
