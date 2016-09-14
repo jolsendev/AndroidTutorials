@@ -5,13 +5,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.BaseAdapter;
 import android.widget.ImageView;
 
 import com.squareup.picasso.Picasso;
 
-import java.util.ArrayDeque;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -53,8 +50,9 @@ public class CustomMovieAdapter extends ArrayAdapter<Movie> {
         if (size > 0) {
             for (int i = 0; i < size; i++) {
                 this.mMovieList.remove(i);
-                notifyDataSetChanged();
+
             }
+            notifyDataSetChanged();
         }
     }
 }

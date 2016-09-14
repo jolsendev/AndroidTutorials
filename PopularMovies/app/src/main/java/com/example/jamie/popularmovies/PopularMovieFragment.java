@@ -126,6 +126,7 @@ public class PopularMovieFragment extends Fragment {
         @Override
         protected void onPostExecute(List<Movie> movies) {
             super.onPostExecute(movies);
+            mAdapter.clear();
             for (Movie movie:movies) {
                 mAdapter.add(movie);
             }
