@@ -73,6 +73,7 @@ public class PopularMovieFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
 
         // this is where you would set up the adapter
+        setHasOptionsMenu(true);
         super.onCreate(savedInstanceState);
     }
 
