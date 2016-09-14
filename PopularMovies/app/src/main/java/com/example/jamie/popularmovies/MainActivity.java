@@ -5,13 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
-enum MovieDetails{
-    MOVIE_KEY {
-        public String toString() {
-            return "movie";
-        }
-    }
-}
+
 public class MainActivity extends AppCompatActivity {
 
 

@@ -83,7 +83,20 @@ public class PopularMovieFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
+        clearData();
         updateRawData();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        clearData();
+        updateRawData();
+    }
+
+    private void clearData() {
+        mAdapter.clear();
+
     }
 
     private void updateRawData() {

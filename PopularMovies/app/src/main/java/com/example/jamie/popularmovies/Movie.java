@@ -3,6 +3,13 @@ package com.example.jamie.popularmovies;
 import java.io.Serializable;
 import java.util.Arrays;
 
+enum MovieDetails{
+    MOVIE_KEY {
+        public String toString() {
+            return "movie";
+        }
+    }
+}
 /**
  * Created by jamie on 8/29/16.
  */
